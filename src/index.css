@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #8a1538;
+}
+
+html, body, #root { height: 100%; }
+
+/* Premium feel */
+.card {
+  @apply bg-white rounded-2xl shadow-soft border border-neutral-100;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold transition;
+}
+.btn-primary {
+  @apply bg-maroon-500 text-white hover:bg-maroon-600;
+}
+.btn-outline {
+  @apply border border-maroon-500 text-maroon-500 hover:bg-maroon-50;
+}
+
+.navlink {
+  @apply text-sm font-medium text-neutral-700 hover:text-maroon-500;
+}
+.active-link {
+  @apply text-maroon-500;
+}
