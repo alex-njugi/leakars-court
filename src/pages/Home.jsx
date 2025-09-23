@@ -24,7 +24,7 @@ export default function Home(){
             <p className="mt-4 text-neutral-700 text-lg">
               Come home to calm. Every apartment at Leakars Court blends modern finishes with everyday convenience:
               constant water, round-the-clock security with CCTV, a peaceful green setting, and quick access to the main road.
-              Choose from impeccably kept <b>1 Bedroom @ KSh 13,000</b> or spacious <b>2 Bedroom @ KSh 18,000</b> units - designed
+              Choose from impeccably kept <b>1 Bedroom @ KSh 15,000</b> or spacious <b>2 Bedroom @ KSh 18,000</b> units - designed
               for comfort, privacy, and effortless living.
             </p>
             <ul className="mt-4 text-neutral-700 text-sm space-y-1">
@@ -54,17 +54,17 @@ export default function Home(){
         <h2 className="text-2xl font-bold mb-2">Why Residents Love Leakars Court</h2>
         <p className="text-neutral-700 mb-6">
           We’ve perfected the details that matter most: safety, reliability, and serenity. Settle into a home that
-          feels premium the moment you arrive — and practical every day thereafter.
+          feels modern the moment you arrive, and practical every day thereafter.
         </p>
         <div className="grid md:grid-cols-4 gap-6">
           <Feature
             icon={<ParkingSquare/>}
             title="Generous, Safe Parking"
-            text="Arrive with ease. Ample, well-lit parking inside the compound — no daily parking stress."
+            text="Arrive with ease. Ample, well-lit parking inside the compound. No daily parking stress."
           />
           <Feature
             icon={<Droplets/>}
-            title="Water — Always On"
+            title="24/7 Water Availability"
             text="Count on a steady, full-time water supply so your routine never skips a beat."
           />
           <Feature
@@ -85,7 +85,7 @@ export default function Home(){
           <Feature
             icon={<Camera/>}
             title="Monitored Spaces"
-            text="CCTV keeps common areas watched — adding reassurance day and night."
+            text="CCTV keeps common areas watched, adding reassurance day and night."
           />
           <Feature
             icon={<Trash2/>}
@@ -95,7 +95,7 @@ export default function Home(){
           <Feature
             icon={<MapPin/>}
             title="Near the Main Road"
-            text="Be on your way in minutes — effortless access to transport, work, and daily errands."
+            text="Be on your way in minutes. Effortless access to transport, work, and daily errands."
           />
         </div>
       </section>
@@ -110,10 +110,10 @@ export default function Home(){
           />
         </div>
         <div>
-          <h3 className="text-2xl font-bold">Spacious Balconies, Bright Interiors, Premium Touches</h3>
+          <h3 className="text-2xl font-bold">Spacious Balconies, Bright Interiors, Modern Touches</h3>
           <p className="text-neutral-700 mt-3">
             Wake up to natural light, unwind on your private balcony, and enjoy finishes that feel modern, clean, and built to last.
-            At Leakars Court, comfort isn’t an upgrade — it’s standard.
+            At Leakars Court, comfort isn’t an upgrade, it’s standard.
           </p>
           <ul className="mt-4 text-neutral-700 text-sm space-y-1">
             <li>• Airy living spaces ideal for relaxing or entertaining</li>

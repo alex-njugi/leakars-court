@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { supabase } from '../lib/supabase'
 
 const DEFAULT_TESTIMONIALS = [
   { name: 'Grace W.', text: 'Quiet, clean, and very secure. My kids love the play area!', rating: 5 },
@@ -7,33 +8,30 @@ const DEFAULT_TESTIMONIALS = [
   { name: 'Naomi K.', text: 'Spacious balcony and safe parking sealed the deal for me.', rating: 4 },
 ]
 
-const STORAGE_KEY = 'lc_reviews' // localStorage key
-
-function Stars({ n }) {
-  return (
-    <div className="text-maroon-500" aria-label={`${n} out of 5 stars`}>
-      {'★'.repeat(n)}
-      <span className="text-neutral-300">{'★'.repeat(5 - n)}</span>
-    </div>
-  )
-}
-
 export default function Reviews() {
-  const [stored, setStored] = useState([])
+  const [reviews, setReviews] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
-  // Load saved reviews from localStorage on mount
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY)
-      if (raw) setStored(JSON.parse(raw))
-    } catch {}
-  }, [])
+  // Fetch from Supabase (newest first)
+  const load = async () => {
+    setLoading(true)
+    setError('')
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100)
+    if (error) setError(error.message)
+    setReviews(data || [])
+    setLoading(false)
+  }
+
+  useEffect(() => { load() }, [])
 
   const allReviews = useMemo(() => {
-    // Newest first: stored (latest first) + defaults
-    const recent = [...stored].reverse()
-    return [...recent, ...DEFAULT_TESTIMONIALS]
-  }, [stored])
+    return [...reviews, ...DEFAULT_TESTIMONIALS] // DB first, then defaults as fillers
+  }, [reviews])
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -44,31 +42,47 @@ export default function Reviews() {
         Real experiences from residents and visitors. Add yours below — it helps others choose with confidence.
       </p>
 
-      {/* Reviews grid */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {allReviews.map((t, i) => (
-          <div key={i} className="card p-6 flex flex-col">
-            <Stars n={t.rating} />
-            <p className="mt-3 text-neutral-700 flex-1">“{t.text}”</p>
-            <div className="mt-4 font-semibold">{t.name}</div>
-          </div>
-        ))}
-      </div>
+      {error && <div className="card p-4 text-sm text-red-700 bg-red-50 border border-red-100 mb-4">{error}</div>}
 
-      {/* Divider */}
+      {loading ? (
+        <div className="card p-6">Loading reviews…</div>
+      ) : (
+        <div className="grid md:grid-cols-3 gap-6">
+          {allReviews.map((t, i) => (
+            <div key={t.id || `default-${i}`} className="card p-6 flex flex-col">
+              <Stars n={t.rating} />
+              <p className="mt-3 text-neutral-700 flex-1">“{t.body || t.text}”</p>
+              <div className="mt-4 font-semibold">{t.name}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="border-t my-10" />
 
-      {/* Frontend-only submission form */}
-      <SubmitReview onAdd={(rev) => {
-        // Save to localStorage
-        const next = [...stored, rev]
-        setStored(next)
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)) } catch {}
-      }} />
+      <SubmitReview
+        onAdd={async (rev) => {
+          // Optimistic UI
+          const optimistic = [{ ...rev, id: `temp-${Date.now()}` }, ...reviews]
+          setReviews(optimistic)
+
+          const { error } = await supabase.from('reviews').insert({
+            name: rev.name,
+            rating: rev.rating,
+            body: rev.text
+          })
+          if (error) {
+            // revert and show error
+            setReviews(reviews)
+            alert('Could not save review. Please try again.')
+          } else {
+            load()
+          }
+        }}
+      />
 
       <div className="mt-10 card p-6 text-sm text-neutral-600">
-        These include example reviews. Your submissions here are saved in your browser (local only). If you want your
-        review considered for the public site, please also share it via WhatsApp or Email using the buttons above.
+        Note: New reviews appear instantly and are visible to everyone across devices. We may curate featured reviews on the homepage.
       </div>
     </div>
   )
@@ -76,43 +90,42 @@ export default function Reviews() {
 
 /* ------------ Components ------------ */
 
+function Stars({ n }) {
+  return (
+    <div className="text-maroon-500" aria-label={`${n} out of 5 stars`}>
+      {'★'.repeat(n)}
+      <span className="text-neutral-300">{'★'.repeat(5 - n)}</span>
+    </div>
+  )
+}
+
 function SubmitReview({ onAdd }) {
   const [name, setName] = useState('')
   const [rating, setRating] = useState(5)
   const [text, setText] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [busy, setBusy] = useState(false)
 
   const isValid = name.trim().length >= 2 && text.trim().length >= 10
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!isValid) return
-    const review = { name: name.trim(), rating, text: text.trim() }
-    onAdd(review)
+    if (!isValid || busy) return
+    setBusy(true)
+    await onAdd({ name: name.trim(), rating, text: text.trim() })
+    setBusy(false)
     setSubmitted(true)
-    // Clear the form
-    setName('')
-    setRating(5)
-    setText('')
+    setName(''); setRating(5); setText('')
   }
-
-  const shareMsg = encodeURIComponent(
-    `Hello Leakars Court, I'd like to share a review.\n\n` +
-    `Name: ${name || '—'}\n` +
-    `Rating: ${rating}/5\n` +
-    `Review: ${text || '—'}\n\n` +
-    `You may feature this on the website.`
-  )
 
   return (
     <section className="card p-6">
       <h2 className="text-xl font-semibold">Add Your Review</h2>
       <p className="text-neutral-700 mt-1">
-        Tell us what you loved about living or visiting Leakars Court. (No login needed — this is a frontend-only form.)
+        Tell us what you loved about living or visiting Leakars Court. No login required.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-5 grid gap-4">
-        {/* Name */}
         <div>
           <label className="block text-sm font-medium mb-1">Your Name</label>
           <input
@@ -125,13 +138,11 @@ function SubmitReview({ onAdd }) {
           />
         </div>
 
-        {/* Rating (clickable stars) */}
         <div>
           <label className="block text-sm font-medium mb-1">Rating</label>
           <StarPicker value={rating} onChange={setRating} />
         </div>
 
-        {/* Review text */}
         <div>
           <label className="block text-sm font-medium mb-1">Your Review</label>
           <textarea
@@ -145,31 +156,15 @@ function SubmitReview({ onAdd }) {
           <p className="text-xs text-neutral-500 mt-1">Tip: Specifics help future residents — what stood out for you?</p>
         </div>
 
-        {/* Actions */}
         <div className="flex flex-wrap gap-3">
-          <button disabled={!isValid} className="btn btn-primary">
-            Save to This Device
+          <button disabled={!isValid || busy} className="btn btn-primary">
+            {busy ? 'Submitting…' : 'Submit Review'}
           </button>
-          <a
-            href={`https://wa.me/254722690154?text=${shareMsg}`}
-            className="btn btn-outline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Share via WhatsApp
-          </a>
-          <a
-            href={`mailto:talexsuppliers@gmail.com?subject=Leakars%20Court%20Review&body=${shareMsg}`}
-            className="btn btn-outline"
-          >
-            Share via Email
-          </a>
         </div>
 
         {submitted && (
           <div className="text-sm text-maroon-700 bg-maroon-50 border border-maroon-100 rounded-xl p-3">
-            Thank you! Your review was saved on this device. If you’d like it considered for the public page,
-            please also send it via WhatsApp or Email.
+            Thank you! Your review has been submitted.
           </div>
         )}
       </form>

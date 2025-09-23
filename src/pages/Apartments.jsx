@@ -14,13 +14,11 @@ import {
 } from 'lucide-react'
 
 export default function Apartments(){
-  // You can update these two numbers anytime.
-  const availability = [
-    { type: '1 Bedroom', price: 13000, available: 3, details: 'Effortless living for singles or couples' },
-    { type: '2 Bedroom', price: 18000, available: 2, details: 'Extra breathing room for small families' },
+  // Static pricing; no availability counts to maintain.
+  const units = [
+    { type: '1 Bedroom', price: 15000, details: 'Effortless living for singles or couples' },
+    { type: '2 Bedroom', price: 18000, details: 'Extra breathing room for small families' },
   ]
-
-  const totalOpen = availability.reduce((s,a)=> s + a.available, 0)
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -32,31 +30,26 @@ export default function Apartments(){
         />
       </Helmet>
 
-      {/* Header + credibility band */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Available Apartments</h1>
-          <p className="text-neutral-700">
-            Thoughtfully kept, move-in-ready homes in a calm, green compound — with everyday essentials handled.
-          </p>
-        </div>
-        <div className="hidden md:block">
-          <Badge>Currently {totalOpen} units open</Badge>
-        </div>
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold mb-2">Available Apartments</h1>
+        <p className="text-neutral-700">
+          Thoughtfully kept, move-in-ready homes in a calm, green compound with everyday essentials handled.
+        </p>
       </div>
 
       {/* Value highlights */}
       <div className="grid md:grid-cols-4 gap-4 mt-6">
         <Value icon={<Shield size={18}/>} text="24/7 security + CCTV" />
-        <Value icon={<Droplets size={18}/>} text="Water — always on" />
+        <Value icon={<Droplets size={18}/>} text="24/7 Water Availability" />
         <Value icon={<SquareParking size={18}/>} text="Generous safe parking" />
         <Value icon={<Trees size={18}/>} text="Serene, tree-lined grounds" />
       </div>
 
       {/* Cards for each unit type */}
       <div className="grid md:grid-cols-2 gap-6 mt-8">
-        {availability.map((a,i)=> (
-          <UnitCard key={i} a={a} />
+        {units.map((u,i)=> (
+          <UnitCard key={i} u={u} />
         ))}
       </div>
 
@@ -64,7 +57,7 @@ export default function Apartments(){
       <section className="mt-10 card p-6">
         <h2 className="text-xl font-semibold">What Every Resident Enjoys</h2>
         <p className="text-neutral-700 mt-2">
-          At Leakars Court, comfort is standard — not a premium add-on. Your home comes with:
+          At Leakars Court, comfort is standard not a premium add-on. Your home comes with:
         </p>
         <ul className="mt-4 grid md:grid-cols-2 gap-2 text-sm text-neutral-700 list-disc list-inside">
           <li>Full-time water supply for predictable routines</li>
@@ -83,12 +76,12 @@ export default function Apartments(){
       {/* Micro-FAQ to remove friction */}
       <section className="mt-8 grid md:grid-cols-3 gap-6">
         <FaqCard
-          q="How do I book a viewing?"
-          a="Tap the WhatsApp button on your preferred unit. Tell us your name and a convenient day/time — we’ll confirm and meet you at the gate."
+          q="How do I check availability?"
+          a={`Tap the WhatsApp button on your preferred unit or call ${SITE.phonePretty}. We’ll confirm the latest status and schedule a viewing.`}
         />
         <FaqCard
           q="Are the photos representative?"
-          a="Yes — and we recommend an in-person tour to feel the light, balcony space, and the calm of the compound."
+          a="Yes, and we recommend an in-person tour to feel the light, balcony space, and the calm of the compound."
         />
         <FaqCard
           q="Is parking limited?"
@@ -112,14 +105,14 @@ export default function Apartments(){
 
 /* ---------- Components ---------- */
 
-function UnitCard({ a }){
+function UnitCard({ u }){
   const msg = encodeURIComponent(
-    `Hello Leakars Court, my name is _____. I’m interested in the ${a.type} at KSh ${a.price.toLocaleString()}. ` +
-    `Are there viewings available this week?`
+    `Hello Leakars Court, my name is _____. I’m interested in the ${u.type} at KSh ${u.price.toLocaleString()}. ` +
+    `Could you share current availability and viewing times?`
   )
 
   const perks = [
-    { icon: <Home size={16}/>, text: a.type === '1 Bedroom' ? 'Efficient layout, bright living' : 'Spacious layout for family life' },
+    { icon: <Home size={16}/>, text: u.type === '1 Bedroom' ? 'Efficient layout, bright living' : 'Spacious layout for family life' },
     { icon: <Camera size={16}/>, text: 'CCTV-monitored common areas' },
     { icon: <SquareParking size={16}/>, text: 'Inside-compound parking' },
     { icon: <MapPin size={16}/>, text: 'Near the main road' },
@@ -131,12 +124,12 @@ function UnitCard({ a }){
     <div className="card p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="font-semibold text-lg">{a.type}</div>
-          <div className="text-neutral-600 text-sm">{a.details}</div>
+          <div className="font-semibold text-lg">{u.type}</div>
+          <div className="text-neutral-600 text-sm">{u.details}</div>
         </div>
         <div className="text-right">
-          <div className="font-bold text-xl">KSh {a.price.toLocaleString()}</div>
-          <div className="text-xs text-neutral-500">{a.available} available</div>
+          <div className="font-bold text-xl">KSh {u.price.toLocaleString()}</div>
+          {/* no availability counts shown */}
         </div>
       </div>
 
@@ -153,11 +146,11 @@ function UnitCard({ a }){
         href={SITE.whatsappLink + '?text=' + msg}
         className="btn btn-primary mt-5 w-full text-center"
       >
-        Enquire on WhatsApp <ArrowRight className="ml-2" size={16}/>
+        Check Availability on WhatsApp <ArrowRight className="ml-2" size={16}/>
       </a>
 
       <p className="text-xs text-neutral-500 mt-3">
-        Prices shown are monthly rent. Availability changes quickly — message us for the latest.
+        Prices shown are monthly rent. For the latest availability, message us on WhatsApp or call {SITE.phonePretty}.
       </p>
     </div>
   )
@@ -168,15 +161,6 @@ function Value({ icon, text }){
     <div className="card p-4 flex items-center gap-3">
       <span className="w-9 h-9 rounded-xl bg-maroon-50 text-maroon-600 grid place-items-center">{icon}</span>
       <span className="text-sm font-medium text-neutral-800">{text}</span>
-    </div>
-  )
-}
-
-function Badge({ children }){
-  return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-maroon-50 text-maroon-700 px-4 py-2 text-sm border border-maroon-100">
-      <span className="w-2 h-2 rounded-full bg-maroon-500" />
-      {children}
     </div>
   )
 }

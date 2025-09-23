@@ -19,9 +19,8 @@ const AMENITIES = [
     icon: <ParkingSquare className="text-maroon-600" size={22} />,
     lead:
       'Arrive home without the daily parking lottery. Our inside-the-compound parking is wide, well-lit, and planned for smooth in–out movement.',
-    body: `You’ll never “hunt” for a spot again. Wide bays make parking easy for both sedans and SUVs, with clear sightlines and lighting that keeps evenings comfortable. Guest spots mean friends and family can visit without stress, and the controlled access ensures only residents and approved guests enter.`,
+    body: `You’ll never “hunt” for a spot again. Wide bays make parking easy for both sedans and SUVs, with clear lighting that keeps evenings comfortable. Guest spots mean friends and family can visit without stress, and the controlled access ensures only residents and approved guests enter.`,
     bullets: [
-      'Ample, clearly marked bays for residents + guests',
       'Evening-safe illumination and clean sightlines',
       'Controlled gate access to reduce through-traffic',
       'Close proximity to block entries for convenient unloading'
@@ -32,8 +31,8 @@ const AMENITIES = [
     title: '24/7 Water Availability',
     icon: <Droplets className="text-maroon-600" size={22} />,
     lead:
-      'Morning showers, evening cooking, laundry on your schedule — not the city’s. At Leakars Court, water reliability is part of the experience.',
-    body: `We maintain full-time water supply with responsible storage and distribution, so daily routines never have to pause. The system is managed to keep pressure consistent and access predictable — because the best luxury is convenience.`,
+      'Morning showers, evening cooking, laundry on your schedule, not the city’s. At Leakars Court, water reliability is part of the experience.',
+    body: `We maintain full-time water supply with responsible storage and distribution, so daily routines never have to pause. The system is managed to keep pressure consistent and access predictable, because the best luxury is convenience.`,
     bullets: [
       'Full-time supply with well-managed storage',
       'Consistent pressure to upper floors',
@@ -47,7 +46,7 @@ const AMENITIES = [
     icon: <Shield className="text-maroon-600" size={22} />,
     lead:
       'Peace of mind is priceless. Professional security teams and always-on camera coverage keep common areas watched day and night.',
-    body: `From the gate to the corridors, our security layers are designed to be visible enough to reassure yet discreet enough to feel like home. Access is monitored, and cameras complement on-site personnel — not replace them — for a thoughtful, human-first approach to safety.`,
+    body: `From the gate to the corridors, our security layers are designed to be visible enough to reassure yet discreet enough to feel like home. Access is monitored, and cameras complement on-site personnel, for a thoughtful human-first approach to safety.`,
     bullets: [
       'Manned gate and controlled visitor entry',
       'Round-the-clock CCTV in strategic common areas',
@@ -62,10 +61,9 @@ const AMENITIES = [
     title: 'Children’s Play Area',
     icon: <Baby className="text-maroon-600" size={22} />,
     lead:
-      'Childhood should feel bright and safe. Our dedicated play space lets kids explore, move, and laugh within view — and within the compound.',
-    body: `We’ve carved out a zone where families can unwind while little ones enjoy fresh air and movement. It’s close enough to feel supervised, and far enough from cars and main walkways to stay calm.`,
+      'Childhood should feel bright and safe. Our dedicated play space lets kids explore, move, and laugh within view and within the compound.',
+    body: `We’ve carved out a zone where families can unwind while little ones enjoy fresh air and movement. It’s close enough to feel supervised.`,
     bullets: [
-      'Set back from traffic and parking lanes',
       'Comfortably visible from common areas',
       'Soft landscaping and easy-to-clean surfaces',
       'Etiquette signage to keep it friendly for everyone'
@@ -76,7 +74,7 @@ const AMENITIES = [
     title: 'Spacious Balconies',
     icon: <Sun className="text-maroon-600" size={22} />,
     lead:
-      'Your private outdoor nook — morning coffee, sunset exhale, or a quiet call with a view of the greenery.',
+      'Your private outdoor nook, morning coffee, sunset exhale, or a quiet call with a view of the greenery.',
     body: `Every balcony is designed as a genuine extension of your living room: space for a bistro set, a plant corner, or simply a breath of air. Railings are sturdy, finishes are easy to maintain, and the outlook is intentionally green.`,
     bullets: [
       'Room for seating and potted plants',
@@ -91,7 +89,7 @@ const AMENITIES = [
     icon: <Trees className="text-maroon-600" size={22} />,
     lead:
       'Step into calm. Lawns, trees, and thoughtful landscaping make the compound feel like a small sanctuary.',
-    body: `Greenery softens the day. Whether you’re returning from work or stepping out on a weekend, the atmosphere stays unhurried — a buffer between you and the bustle just beyond the gate.`,
+    body: `Greenery softens the day. Whether you’re returning from work or stepping out on a weekend, the atmosphere stays unhurried, a buffer between you and the bustle just beyond the gate.`,
     bullets: [
       'Curated mix of trees and shrubs for shade + texture',
       'Regular landscaping and seasonal refreshes',
@@ -105,9 +103,8 @@ const AMENITIES = [
     icon: <Trash2 className="text-maroon-600" size={22} />,
     lead:
       'Cleanliness isn’t a chore when the system works. We keep disposal organized, discreet, and on schedule.',
-    body: `Neat common areas signal a home that’s respected. Collection points are easy to access yet out of sight, with frequent pickups that prevent pile-ups. The result is a compound that stays fresh and welcoming every day.`,
+    body: `Neat common areas signal a home that’s respected. Collection points are easy to access, with frequent pickups. The result is a compound that stays fresh and welcoming every day.`,
     bullets: [
-      'Clearly marked, tidy collection points',
       'Regular pickups to stop overflow',
       'Odor-control best practices',
       'Clear resident guidelines for smooth cooperation'
@@ -153,9 +150,9 @@ export default function Amenities(){
       </div>
 
       <div className="mt-12 card p-6">
-        <h3 className="text-xl font-semibold">Everything You Need — Thoughtfully Arranged</h3>
+        <h3 className="text-xl font-semibold">Everything You Need - Thoughtfully Arranged</h3>
         <p className="text-neutral-700 mt-2">
-          Choose the home that supports your best days. Our <b>1 Bedroom @ KSh 13,000</b> is ideal for singles or couples seeking quiet ease,
+          Choose the home that supports your best days. Our <b>1 Bedroom @ KSh 15,000</b> is ideal for singles or couples seeking quiet ease,
           while the <b>2 Bedroom @ KSh 18,000</b> gives growing households extra breathing room. Both enjoy the full set of Leakars Court amenities.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
