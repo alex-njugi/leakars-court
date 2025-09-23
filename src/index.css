@@ -1,31 +1,143 @@
+/* Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Brand token */
 :root {
   --brand: #8a1538;
 }
 
+/* App root sizing */
 html, body, #root { height: 100%; }
 
-/* Premium feel */
-.card {
-  @apply bg-white rounded-2xl shadow-soft border border-neutral-100;
+/* ===== Base (mobile-first) ===== */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-[15px] leading-6 text-neutral-800 bg-white;
+  }
+
+  /* Headings tuned for small screens */
+  h1 { @apply text-3xl font-bold leading-tight; }
+  h2 { @apply text-2xl font-semibold leading-snug; }
+  h3 { @apply text-xl font-semibold; }
+
+  /* Remove iOS tap highlight for cleaner feel */
+  a, button { -webkit-tap-highlight-color: transparent; }
 }
 
-.btn {
-  @apply inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold transition;
-}
-.btn-primary {
-  @apply bg-maroon-500 text-white hover:bg-maroon-600;
-}
-.btn-outline {
-  @apply border border-maroon-500 text-maroon-500 hover:bg-maroon-50;
+/* ===== Components ===== */
+@layer components {
+  /* Soft, premium shadow (Tailwind doesn't ship shadow-soft) */
+  .shadow-soft {
+    box-shadow:
+      0 1px 1px rgba(0,0,0,0.04),
+      0 4px 10px rgba(0,0,0,0.06);
+  }
+
+  /* Premium card */
+  .card {
+    @apply bg-white rounded-2xl shadow-soft border border-neutral-100 transition-transform duration-200;
+  }
+  .card:where(:hover, :focus-within) { transform: translateY(-1px); }
+
+  /* Comfy touch target */
+  .touch-target { min-height: 44px; }
+
+  /* Buttons (mobile-first) */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold transition-all duration-200 active:scale-[.98] touch-target;
+  }
+  .btn-primary {
+    @apply bg-maroon-500 text-white hover:bg-maroon-600
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-500/40 focus-visible:ring-offset-2;
+  }
+  .btn-outline {
+    @apply border border-maroon-500 text-maroon-500 hover:bg-maroon-50
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-500/30 focus-visible:ring-offset-2;
+  }
+
+  /* Nav links */
+  .navlink {
+    @apply text-[15px] font-medium text-neutral-700 hover:text-maroon-600 px-2 py-2 rounded-lg
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-500/30;
+  }
+  .active-link {
+    @apply text-maroon-500 md:text-maroon-600;
+  }
+
+  /* Form controls */
+  .input, .select, .textarea {
+    @apply w-full rounded-xl border border-neutral-200 px-4 py-3 text-[15px]
+           focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-500/50
+           placeholder:text-neutral-400 bg-white;
+  }
+  .textarea { @apply min-h-[120px] resize-y; }  /* <-- fixed: use resize-y */
+
+  /* Mobile sheet helpers (optional reuse) */
+  .sheet-panel { @apply rounded-t-3xl bg-white shadow-xl border-t; }
+  .sheet-handle { @apply mx-auto mt-2 mb-3 h-1.5 w-10 rounded-full bg-neutral-200; }
+
+  /* Focus ring helper for custom elements */
+  .focus-ring { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-500/40 focus-visible:ring-offset-2; }
 }
 
-.navlink {
-  @apply text-sm font-medium text-neutral-700 hover:text-maroon-500;
+/* ===== Utilities ===== */
+@layer utilities {
+  /* Safe-area support for notches */
+  .pt-safe { padding-top: max(1rem, env(safe-area-inset-top)); }
+  .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+  /* Mobile container spacing */
+  .px-mobile { @apply px-4; }
+  @media (min-width: 768px) {
+    .px-mobile { @apply px-6; }
+  }
+
+  /* Sticky blurred header */
+  .sticky-blur { @apply sticky top-0 bg-white/90 backdrop-blur border-b; }
+
+  /* Gentle show/hide for dropdowns/sheets */
+  .invisible-soft { @apply opacity-0 scale-95 pointer-events-none; }
+  .visible-soft { @apply opacity-100 scale-100; }
+
+  /* Hide scrollbars in drawers */
+  .scroll-smoothy { -ms-overflow-style: none; scrollbar-width: none; }
+  .scroll-smoothy::-webkit-scrollbar { display: none; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
-.active-link {
-  @apply text-maroon-500;
+
+/* ===== Mobile-specific polish (no markup changes) ===== */
+
+/* Make topbar pills comfy on small screens */
+@media (max-width: 639px) {
+  .topbar-pill { @apply inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-white; }
 }
+
+/* Improve mobile menu link spacing */
+#mobile-menu nav > a,
+#mobile-menu nav .navlink {
+  @apply rounded-xl px-2 py-3 text-[15px];
+}
+
+/* Small spacing after collapsible group */
+#mobile-menu nav details + a { @apply mt-1; }
+
+/* Icon sizing helper */
+.icon-16 { width: 16px; height: 16px; }

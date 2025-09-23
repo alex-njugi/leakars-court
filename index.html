@@ -1,19 +1,96 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leakars Court — Luxury Apartments</title>
-    <meta name="description" content="Leakars Court offers modern, premium 1 & 2 bedroom apartments with secure parking, 24/7 security & CCTV, full-time water, and serene green surroundings near the main road." />
-    <meta name="keywords" content="Leakars Court, apartments for rent, 1 bedroom, 2 bedroom, secure parking, CCTV, Nairobi rentals, affordable luxury apartments" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Canonical & robots -->
+    <link rel="canonical" href="https://leakarscourt.co.ke/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index,follow" />
+
+    <!-- Primary meta -->
+    <title>Leakars Court — Luxury Apartments in Nairobi (1BR from KSh 13,000, 2BR from KSh 18,000)</title>
+    <meta name="description" content="Leakars Court offers modern, premium 1 & 2 bedroom apartments in a serene, green compound near the main road: safe parking, 24/7 security with CCTV, constant water, children’s play area, and spacious balconies. Book a private viewing." />
+    <meta name="keywords" content="Leakars Court, apartments Nairobi, 1 bedroom, 2 bedroom, luxury apartments, secure parking, CCTV, constant water, balcony, children play area, rentals Kenya" />
     <meta name="author" content="Leakars Court" />
-    <meta property="og:title" content="Leakars Court, modern Apartments" />
-    <meta property="og:description" content="Modern, premium living: 1BR @ 13,000 KSh & 2BR @ 18,000 KSh. Safe parking, CCTV, water 24/7, children’s play area, and serene green environment." />
+    <meta name="theme-color" content="#8a1538" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Leakars Court" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/placeholder-assets/cover.jpg" />
-    <meta property="og:url" content="https://leakarscourt.example.com" />
+    <meta property="og:locale" content="en_KE" />
+    <meta property="og:title" content="Leakars Court — Luxury Apartments in Nairobi" />
+    <meta property="og:description" content="Modern, premium living: 1BR @ KSh 13,000 & 2BR @ KSh 18,000. Safe parking, CCTV, water 24/7, kids’ play area, serene green environment, near the main road." />
+    <meta property="og:url" content="https://leakarscourt.co.ke/" />
+    <meta property="og:image" content="https://leakarscourt.co.ke/placeholder-assets/cover.jpg" />
+    <meta property="og:image:alt" content="Leakars Court exterior and landscaped grounds" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Leakars Court — Luxury Apartments in Nairobi" />
+    <meta name="twitter:description" content="1BR @ KSh 13,000 • 2BR @ KSh 18,000 • Parking • CCTV • Water 24/7 • Play area • Serene greenery • Near main road." />
+    <meta name="twitter:image" content="https://leakarscourt.co.ke/placeholder-assets/cover.jpg" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#8a1538" />
+
+    <!-- Preconnects (speed up third-parties you actually use) -->
+    <link rel="preconnect" href="https://www.google.com" />
+    <link rel="preconnect" href="https://maps.googleapis.com" />
+    <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
+
+    <!-- Sitemap (create /sitemap.xml at deploy) -->
+    <link rel="sitemap" type="application/xml" href="https://leakarscourt.co.ke/sitemap.xml" />
+
+    <!-- JSON-LD: ApartmentComplex + Geo + Contact + Pricing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ApartmentComplex",
+      "name": "Leakars Court",
+      "url": "https://leakarscourt.co.ke/",
+      "image": "https://leakarscourt.co.ke/placeholder-assets/cover.jpg",
+      "description": "Modern, luxury 1 & 2 bedroom apartments with safe parking, 24/7 security with CCTV, constant water, children’s play area, spacious balconies, and serene greenery near the main road.",
+      "telephone": "+254722690154",
+      "email": "talexsuppliers@gmail.com",
+      "priceRange": "KSh 15,000 - KSh 18,000 / month",
+      "numberOfRoomsTotal": 20,
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Secure parking", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "24/7 security with CCTV", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Full-time water", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Children's play area", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Spacious balconies", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Serene green environment", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Near main road", "value": true }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -1.1594250988294796,
+        "longitude": 36.8195772749656
+      },
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+254722690154",
+        "contactType": "customer service",
+        "areaServed": "KE",
+        "availableLanguage": "en"
+      }]
+    }
+    </script>
   </head>
+
   <body class="bg-white">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

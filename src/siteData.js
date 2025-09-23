@@ -4,10 +4,10 @@ export const SITE = {
   phonePretty: '+254 722 690 154',
   whatsappLink: 'https://wa.me/254722690154',
   email: 'talexsuppliers@gmail.com',
-  address: 'Near main road • Nairobi',
+  address: 'Near main road • Kiambu',
   unitsTotal: 20,
   pricing: [
-    { type: '1 Bedroom', price: 13000 },
+    { type: '1 Bedroom', price: 15000 },
     { type: '2 Bedroom', price: 18000 },
   ],
   amenities: [
