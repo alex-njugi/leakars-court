@@ -233,7 +233,7 @@ function Footer(){
         <div>
           <div className="font-semibold mb-2">Visit Us</div>
           <p className="text-sm text-neutral-600 flex items-start gap-2">
-            <MapPin className="mt-0.5" size={18}/> Near main road • Quick access • Nairobi
+            <MapPin className="mt-0.5" size={18}/> Near main road • Quick access • Kiambu
           </p>
           <a className="text-maroon-600 underline mt-2 inline-block" href="/location">Open map</a>
         </div>

@@ -138,7 +138,7 @@ export default function Home() {
         <div className="order-1 md:order-2">
           <div className="card p-0 overflow-hidden group">
             <img
-              src="/placeholder-assets/livingroom.jpg"
+              src="/placeholder-assets/exterior.jpg"
               alt="Bright living room with premium finishes and balcony access"
               loading="lazy"
               decoding="async"
