@@ -2,11 +2,6 @@ import { Helmet } from 'react-helmet-async'
 import { ArrowRight, Shield, Droplets, ParkingSquare, Trees, Camera, Baby, Trash2, MapPin } from 'lucide-react'
 import CTA from '../components/CTA'
 
-/**
- * Mobile-only tweaks:
- * - CTAs: full-width on small screens + min tap height
- * - Benefits strip: 1 column on very small screens, 2 on sm+
- */
 export default function Home() {
   return (
     <div className="bg-white text-neutral-900">
@@ -35,11 +30,11 @@ export default function Home() {
             <p className="mt-5 text-neutral-700 text-base md:text-lg max-w-prose">
               Come home to calm. Every apartment blends modern finishes with everyday convenience: constant water,
               round-the-clock security with CCTV, a peaceful green setting, and quick access to the main road. Choose from impeccably
-              kept <strong>1 Bedroom @ KSh 15,000</strong> or spacious <strong>2 Bedroom @ KSh 18,000</strong> units - designed for comfort,
+              kept <strong>1 Bedroom @ KSh 15,000</strong> or spacious <strong>2 Bedroom @ KSh 18,000</strong> units—designed for comfort,
               privacy, and effortless living.
             </p>
 
-            {/* Quick benefits strip (mobile stacks to 1 column) */}
+            {/* Quick benefits */}
             <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-neutral-700 md:max-w-[520px]">
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>20 tastefully maintained units</dd></div>
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Move-in ready</dd></div>
@@ -47,26 +42,18 @@ export default function Home() {
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Children’s play area</dd></div>
             </dl>
 
-            {/* CTAs (full-width on mobile, same text & order) */}
+            {/* CTAs */}
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
-                href="/contact"
-                className="btn btn-primary group w-full sm:w-auto min-h-[44px]"
-                aria-label="Book a private viewing"
-              >
+              <a href="/contact" className="btn btn-primary group w-full sm:w-auto min-h-[44px]" aria-label="Book a private viewing">
                 Book a Private Viewing
                 <ArrowRight className="ml-2 inline-block transition-transform group-hover:translate-x-0.5" size={18}/>
               </a>
-              <a
-                href="/apartments"
-                className="btn btn-outline w-full sm:w-auto min-h-[44px]"
-                aria-label="See current availability"
-              >
+              <a href="/apartments" className="btn btn-outline w-full sm:w-auto min-h-[44px]" aria-label="See current availability">
                 See Current Availability
               </a>
             </div>
 
-            {/* Trust badges (unchanged) */}
+            {/* Trust badges */}
             <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-600">
               <span className="px-3 py-1 rounded-full bg-green-50 text-green-700">24/7 Security Services</span>
               <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700">Reliable Water</span>
@@ -79,14 +66,13 @@ export default function Home() {
               <img
                 src="/placeholder-assets/cover.jpg"
                 alt="Leakars Court exterior with landscaped greenery"
-                loading="eager" /* hero */
+                loading="eager"
                 decoding="async"
                 sizes="(min-width: 768px) 600px, 100vw"
-                onError={(e)=>{ e.currentTarget.src='/placeholder-assets/exterior.txt' }}
+                onError={(e)=>{ e.currentTarget.src='/placeholder-assets/placeholder.jpg' }}
                 className="w-full h-[300px] md:h-[420px] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
               />
             </div>
-            {/* Subtle floating badge */}
             <div className="absolute -bottom-4 left-4 md:-bottom-5 md:left-5">
               <div className="rounded-2xl bg-white/90 backdrop-blur border shadow-md px-4 py-2 text-sm flex items-center gap-2">
                 <Shield size={16} className="text-green-600"/>
@@ -123,7 +109,7 @@ export default function Home() {
           <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Spacious balconies, bright interiors, modern touches</h3>
           <p className="text-neutral-700">
             Wake up to natural light, unwind on your private balcony, and enjoy finishes that feel modern, clean, and built to last.
-            At Leakars Court, comfort isn’t an upgrade, it’s standard.
+            At Leakars Court, comfort isn’t an upgrade—it’s standard.
           </p>
           <ul className="text-neutral-700 text-sm space-y-1 list-disc pl-5">
             <li>Airy living spaces ideal for relaxing or entertaining</li>
@@ -143,7 +129,7 @@ export default function Home() {
               loading="lazy"
               decoding="async"
               sizes="(min-width: 768px) 600px, 100vw"
-              onError={(e)=>{ e.currentTarget.src='/placeholder-assets/livingroom.txt' }}
+              onError={(e)=>{ e.currentTarget.src='/placeholder-assets/placeholder.jpg' }}
               className="w-full h-[260px] md:h-[420px] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
             />
           </div>
