@@ -3,7 +3,7 @@ export const SITE = {
   phoneIntl: '+254722690154',
   phonePretty: '+254 722 690 154',
   whatsappLink: 'https://wa.me/254722690154',
-  email: 'talexsuppliers@gmail.com',
+  email: 'wagnerlimited@gmail.com',
   address: 'Near main road • Kiambu',
   unitsTotal: 20,
   pricing: [

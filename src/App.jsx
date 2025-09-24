@@ -162,15 +162,15 @@ function TopBar(){
           <a href="https://wa.me/254722690154" className="flex items-center gap-2 hover:underline">
             <Phone size={16}/> +254 722 690 154
           </a>
-          <a href="mailto:talexsuppliers@gmail.com" className="flex items-center gap-2 hover:underline">
-            <Mail size={16}/> talexsuppliers@gmail.com
+          <a href="mailto:wagnerlimited@gmail.com" className="flex items-center gap-2 hover:underline">
+            <Mail size={16}/> wagnerlimited@gmail.com
           </a>
         </div>
 
         {/* Mobile compact */}
         <div className="sm:hidden flex items-center gap-2">
           <a href="https://wa.me/254722690154" className="topbar-pill">Call</a>
-          <a href="mailto:talexsuppliers@gmail.com" className="topbar-pill">Email</a>
+          <a href="mailto:wagnerlimited@gmail.com" className="topbar-pill">Email</a>
         </div>
       </div>
     </div>
@@ -334,10 +334,10 @@ function Footer(){
         <div>
           <div className="font-semibold mb-2 text-neutral-900 dark:text-[var(--text-1)]">Contact</div>
           <p className="text-sm text-neutral-600 dark:text-[var(--text-2)]">Phone/WhatsApp: +254 722 690 154</p>
-          <p className="text-sm text-neutral-600 dark:text-[var(--text-2)]">Email: talexsuppliers@gmail.com</p>
+          <p className="text-sm text-neutral-600 dark:text-[var(--text-2)]">Email: wagnerlimited@gmail.com</p>
           <div className="mt-3 flex gap-3">
             <a href="https://wa.me/254722690154" className="btn btn-primary">Chat on WhatsApp</a>
-            <a href="mailto:talexsuppliers@gmail.com" className="btn btn-outline">Email Us</a>
+            <a href="mailto:wagnerlimited@gmail.com" className="btn btn-outline">Email Us</a>
           </div>
         </div>
       </div>
