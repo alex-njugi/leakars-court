@@ -30,13 +30,13 @@ export default function Home() {
             <p className="mt-5 text-neutral-700 text-base md:text-lg max-w-prose">
               Come home to calm. Every apartment blends modern finishes with everyday convenience: constant water,
               round-the-clock security with CCTV, a peaceful green setting, and quick access to the main road. Choose from impeccably
-              kept <strong>1 Bedroom @ KSh 15,000</strong> or spacious <strong>2 Bedroom @ KSh 18,000</strong> units—designed for comfort,
+              kept <strong>1 Bedroom @ KSh 15,000</strong> or spacious <strong>2 Bedroom @ KSh 18,000</strong> units-designed for comfort,
               privacy, and effortless living.
             </p>
 
             {/* Quick benefits */}
             <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-neutral-700 md:max-w-[520px]">
-              <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>20 tastefully maintained units</dd></div>
+              <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Safely maintained units</dd></div>
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Move-in ready</dd></div>
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Large, well-lit parking</dd></div>
               <div className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-maroon-500"/><dd>Children’s play area</dd></div>
@@ -109,7 +109,7 @@ export default function Home() {
           <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Spacious balconies, bright interiors, modern touches</h3>
           <p className="text-neutral-700">
             Wake up to natural light, unwind on your private balcony, and enjoy finishes that feel modern, clean, and built to last.
-            At Leakars Court, comfort isn’t an upgrade—it’s standard.
+            At Leakars Court, comfort isn’t an upgrade-it’s standard.
           </p>
           <ul className="text-neutral-700 text-sm space-y-1 list-disc pl-5">
             <li>Airy living spaces ideal for relaxing or entertaining</li>

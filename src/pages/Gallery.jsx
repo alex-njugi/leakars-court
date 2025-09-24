@@ -45,7 +45,7 @@ export default function Gallery(){
         <span className="badge"><Images size={14}/> {photos.length} photos</span>
       </div>
       <p className="text-neutral-700 mb-6">
-        A glimpse of everyday life at Leakars Court — calm, green, and thoughtfully maintained. Tap any photo to view full size.
+        A glimpse of everyday life at Leakars Court - calm, green, and thoughtfully maintained. Tap any photo to view full size.
       </p>
 
       {/* Picture-only tiles */}
