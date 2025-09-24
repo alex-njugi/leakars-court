@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leakarscourt.co.ke/sitemap.xml
